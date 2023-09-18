@@ -9,15 +9,11 @@ services:
     runtime: nvidia
 
     environment:
-#    - TZ=Asia/Bangkok
-#    - LANG=en_US.UTF-8
-#    - LC_MESSAGES=en_US.UTF-8
-#    - LC_ALL=en_US.UTF-8
             
 #    - CUDA_VISIBLE_DEVICES=0,1
-    - CUDA_VISIBLE_DEVICES=0
-#    - NVIDIA_VISIBLE_DEVICES=all
-    - NVIDIA_VISIBLE_DEVICES=1
+#    - CUDA_VISIBLE_DEVICES=0
+    - NVIDIA_VISIBLE_DEVICES=all
+#    - NVIDIA_VISIBLE_DEVICES=1
 
 
 #    privileged: true
