@@ -1,8 +1,9 @@
 version: '2.4'
 
 services:
-  cuda-anaconda-docker:
-    build: .
+  cuda-anaconda-pytorch:
+#    build: .
+    image: chanwitkepha/cuda-anaconda-pytorch:cu11.8-anaconda3-pytorch2.01 
     container_name: cuda-anaconda-docker
     tty: true
     runtime: nvidia

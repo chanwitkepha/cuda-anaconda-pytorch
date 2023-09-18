@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.1.0-cudnn8-devel-ubuntu20.04
+FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu20.04
 
 
 ENV HOME=/root
@@ -25,6 +25,18 @@ RUN dpkg-reconfigure --frontend noninteractive tzdata
 RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen /etc/locale.gen && locale-gen
 RUN locale-gen th_TH.UTF-8
 
-RUN pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+# ANACONDA
+# Reference 
+# https://dev.to/ordigital/nvidia-525-cuda-118-python-310-pytorch-gpu-docker-image-1l4a
+# https://pytorch.org/get-started/locally/
+
+RUN wget -O /tmp/anaconda.sh https://repo.anaconda.com/archive/Anaconda3-2023.07-2-Linux-x86_64.sh \
+    && bash /tmp/anaconda.sh -b -p /root/anaconda \
+    && eval "$(/root/anaconda/bin/conda shell.bash hook)" \
+    && conda init \
+    && conda update -n base -c defaults conda \
+    && conda create --name env \
+    && conda activate env \
+    && conda install -y pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
 
 #CMD ["/sbin/init"] 
