@@ -1,0 +1,36 @@
+version: '2.4'
+
+services:
+  cuda-docker:
+    build: .
+    container_name: cuda-docker
+    tty: true
+    runtime: nvidia
+
+    environment:
+#    - TZ=Asia/Bangkok
+#    - LANG=en_US.UTF-8
+#    - LC_MESSAGES=en_US.UTF-8
+#    - LC_ALL=en_US.UTF-8
+            
+#    - CUDA_VISIBLE_DEVICES=0,1
+    - CUDA_VISIBLE_DEVICES=0
+#    - NVIDIA_VISIBLE_DEVICES=all
+    - NVIDIA_VISIBLE_DEVICES=1
+
+
+#    privileged: true
+    network_mode: host
+
+
+    #networks:
+    #  cuda-docker:
+    #     ipv4_address: 172.22.0.2
+
+    #networks:
+    #   cuda-docker:
+    #     driver: bridge
+    #       ipam:
+    #         driver: default
+    #           config:
+    #             - subnet: 172.22.0.0/24
