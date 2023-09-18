@@ -1,9 +1,9 @@
 version: '2.4'
 
 services:
-  cuda-docker:
+  cuda-anaconda-docker:
     build: .
-    container_name: cuda-docker
+    container_name: cuda-anaconda-docker
     tty: true
     runtime: nvidia
 
